@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pull the Spike</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #fff9f4;
+      font-family: 'Fredoka', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      position: relative;
+      text-align: center;
+      max-width: 500px;
+      margin: 2rem auto;
+      overflow: hidden;
+    }
+    #elephant {
+      width: 100%;
+      display: block;
+      user-select: none;
+    }
+    #title-text {
+      position: absolute;
+      top: 5%;
+      width: 100%;
+      text-align: center;
+      font-size: 3rem;
+      color: #ff4d88;
+      text-shadow: 2px 2px 5px #fff;
+      pointer-events: none;
+      z-index: 10;
+    }
+    #counter-display {
+      position: absolute;
+      bottom: 30%;
+      width: 100%;
+      text-align: center;
+      font-size: 1.8rem;
+      color: #333;
+      text-shadow: 1px 1px 4px #fff;
+      pointer-events: none;
+    }
+    #elephant:active {
+      transform: scale(1.03);
+      transition: transform 0.05s;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div id="title-text">PULL THE SPIKE</div>
+    <img
+      id="elephant"
+      src="https://i.meee.com.tw/zDuEJ6Z.png"
+      alt="Elephant"
+      onclick="poke()"
+    />
+    <div id="counter-display">Pull count: <span id="counter">0</span></div>
+  </div>
+
+  <audio id="poke-sound" preload="auto" src="YOUR_AUDIO_URL_HERE"></audio>
+
+  <script>
+    let count = 0;
+    const sound = document.getElementById("poke-sound");
+
+    function poke() {
+      count++;
+      document.getElementById("counter").innerText = count;
+
+      // 播放音效
+      sound.pause();
+      sound.currentTime = 0;
+      sound.play();
+
+      const elephant = document.getElementById("elephant");
+      elephant.src = "https://i.ibb.co/4RRP3D78/cool-elephant-png.png";
+
+      setTimeout(() => {
+        elephant.src = "https://i.meee.com.tw/zDuEJ6Z.png";
+      }, 50);
+    }
+  </script>
+
+</body>
+</html>
+
